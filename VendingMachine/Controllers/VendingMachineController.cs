@@ -13,9 +13,11 @@ public class VendingMachineController : Controller
         return Ok(vendingMachine);
     }
 
-    [Route("/{itemId:min(1)}"), HttpPut]
-    public async Task<ActionResult<Application.Model.VendingMachine>> ItemTransaction(Application.Model.VendingMachine vendingMachine, int itemId, double amount, PaymentType paymentType)
+    [Route("vending-machine/{itemId:min(1)}"), HttpPut]
+    public async Task<ActionResult<Application.Model.VendingMachine>> ItemTransaction(int itemId, double amount, PaymentType paymentType)
     {
+        var vendingMachine = new Application.Model.VendingMachine();
+
         vendingMachine.ItemTransaction(itemId, amount, paymentType);
 
         return Ok(vendingMachine);

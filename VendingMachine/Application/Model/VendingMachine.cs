@@ -15,7 +15,7 @@ public class VendingMachine
     private const double InitialAmount = 0d;
 
     public int NumberOfItemSold { get; set; }
-    public int AvailableItems { get; }
+    public int AvailableItems { get; set; }
 
     public double CashAmount { get; private set; } = InitialAmount;
     public double CardAmount { get; private set; } = InitialAmount;
@@ -50,6 +50,7 @@ public class VendingMachine
         Items.Remove(itemToRemove);
 
         NumberOfItemSold++;
+        AvailableItems = Items.Count;
 
         if (ShouldRestock())
         {

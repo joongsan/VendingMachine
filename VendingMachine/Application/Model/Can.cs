@@ -11,5 +11,5 @@ public sealed class Can
     
     public int Id { get; }
     public double Price { get; }
-    public Flavour Flavour { get; set; }
+    public Flavour Flavour { get; }
 }
