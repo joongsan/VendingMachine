@@ -26,19 +26,19 @@ Assumptions are located within `Plan of attack.docx` file
 
 To run the Vending Machine project locally, follow these steps:
 
+- Clone the repository: `git clone https://github.com/joongsan/VendingMachine.git`
+
 Vending Machine API:
-1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd VendingMachine`
-3. Install the necessary dependencies: `dotnet restore`
-4. Build the project: `dotnet build`
-5. Run the application: `dotnet run`
-6. Open your web browser and visit `http://localhost:5000` to access the application.
+1. Navigate to the project directory: `cd VendingMachine`
+2. Install the necessary dependencies: `dotnet restore`
+3. Build the project: `dotnet build`
+4. Run the application: `dotnet run`
+5. Open your web browser and visit `http://localhost:5000` to access the application.
 
 Vending Machine UI:
-1. Clone the repository.
-2. Navigate to the `VendingMachineUI` directory.
-3. Install dependencies by running the following command: `npm install`
-4. Start the development server: `npm run serve`
+1. Navigate to the `VendingMachineUI` directory.
+2. Install dependencies by running the following command: `npm install`
+3. Start the development server: `npm run serve`
 
 ## Project Structure
 
