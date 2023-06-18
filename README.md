@@ -34,10 +34,8 @@ Vending Machine API:
 Vending Machine UI:
 1. Clone the repository.
 2. Navigate to the `VendingMachineUI` directory.
-3. Install dependencies by running the following command:
-4. 'npm install'
-5. Start the development server:
-6. 'npm run serve'
+3. Install dependencies by running the following command: `npm install`
+4. Start the development server: `npm run serve`
 
 ## Project Structure
 
