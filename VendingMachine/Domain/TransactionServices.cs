@@ -65,6 +65,8 @@ public class TransactionServices : ITransactionService
         Restock(items);
         currentVendingMachine.CashAmount = 0d;
         currentVendingMachine.CardAmount = 0d;
+        currentVendingMachine.AvailableItems = items.Count;
+        currentVendingMachine.NumberOfItemSold = 0;
 
         // Return the updated vending machine
         return Task.FromResult(currentVendingMachine);

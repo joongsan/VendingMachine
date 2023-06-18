@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-
-using VendingMachine.Application.Models;
+using VendingMachine.Controllers.Models;
 using VendingMachine.Domain;
 
 namespace VendingMachine.Controllers;
