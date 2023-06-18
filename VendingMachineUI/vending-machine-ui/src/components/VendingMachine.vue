@@ -129,7 +129,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import { Component, Watch } from 'vue-property-decorator';
 
-import IVendingMachine, { ICan } from '../domain/IVendingMachine';
+import IVendingMachine from '../domain/IVendingMachine';
 import { Flavour } from '../domain/Flavour';
 
 const baseURL = 'https://localhost:7255/';
@@ -193,22 +193,14 @@ export default class VendingMachine extends Vue {
   
   async submitOrder() {
     // Perform the transaction with the selected item
-    console.log(this.selectedItem)
     try {
-      console.log(this.selectedItem)
       const response = await axios.post(baseURL, {
-        currentVendingMachine: { 
-          items: this.vendingMachine?.items,
-          numberOfItemSold: this.vendingMachine?.numberOfItemSold,
-          availableItems: this.vendingMachine?.availableItems,
-          cashAmount: this.vendingMachine?.cashAmount,
-          cardAMount: this.vendingMachine?.cardAmount
-        },
+        currentVendingMachine: this.vendingMachine,
         itemId: this.selectedItem.itemId,
         paymentType: this.selectedItem.paymentType
       });
 
-      console.log(response)
+      this.vendingMachine = response.data;
     } catch (error) {
       console.log(error)
     } finally {

@@ -1,23 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VendingMachine.Application.Model;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+
+using VendingMachine.Application.Models;
+using VendingMachine.Domain;
 
 namespace VendingMachine.Controllers;
 
 public class VendingMachineController : Controller
 {
-    [Route(""), HttpGet]
-    public Task<ActionResult<Application.Model.VendingMachine>> GetInitialVendingMachine()
-    {
-        var vendingMachine = new Application.Model.VendingMachine();
+    private readonly ITransactionService _transactionService;
 
-        return Task.FromResult<ActionResult<Application.Model.VendingMachine>>(Ok(vendingMachine));
+    public VendingMachineController(ITransactionService transactionService)
+    {
+        _transactionService = transactionService;
+    }
+
+    [Route(""), HttpGet]
+    public async Task<IStatusCodeActionResult> GetInitialVendingMachine()
+    {
+        var newVendingMachine = await _transactionService.InitialiseVendingMachine();
+
+        return Ok(newVendingMachine);
     }
 
     [Route(""), HttpPost]
-    public Task<ActionResult<Application.Model.VendingMachine>> ItemTransaction([FromBody] Application.Model.VendingMachine currentVendingMachine, int itemId, PaymentType paymentType)
+    public async Task<IStatusCodeActionResult> ItemTransaction([FromBody] TransactionRequest request)
     {
-        currentVendingMachine.ItemTransaction(itemId, paymentType);
+        var updatedVendingMachine = await _transactionService.PurchaseItem(request.CurrentVendingMachine,
+                                                                           request.ItemId,
+                                                                           request.PaymentType);
 
-        return Task.FromResult<ActionResult<Application.Model.VendingMachine>>(Ok(currentVendingMachine));
+        return Ok(updatedVendingMachine);
     }
 }

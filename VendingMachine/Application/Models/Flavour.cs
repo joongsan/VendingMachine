@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Application.Model;
+﻿namespace VendingMachine.Application.Models;
 
 public enum Flavour
 {
