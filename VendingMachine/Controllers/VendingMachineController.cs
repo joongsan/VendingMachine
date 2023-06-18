@@ -6,20 +6,18 @@ namespace VendingMachine.Controllers;
 public class VendingMachineController : Controller
 {
     [Route(""), HttpGet]
-    public async Task<ActionResult<Application.Model.VendingMachine>> GetInitialVendingMachine()
+    public Task<ActionResult<Application.Model.VendingMachine>> GetInitialVendingMachine()
     {
         var vendingMachine = new Application.Model.VendingMachine();
 
-        return Ok(vendingMachine);
+        return Task.FromResult<ActionResult<Application.Model.VendingMachine>>(Ok(vendingMachine));
     }
 
-    [Route("vending-machine/{itemId:min(1)}"), HttpPut]
-    public async Task<ActionResult<Application.Model.VendingMachine>> ItemTransaction(int itemId, double amount, PaymentType paymentType)
+    [Route(""), HttpPost]
+    public Task<ActionResult<Application.Model.VendingMachine>> ItemTransaction([FromBody] Application.Model.VendingMachine currentVendingMachine, int itemId, PaymentType paymentType)
     {
-        var vendingMachine = new Application.Model.VendingMachine();
+        currentVendingMachine.ItemTransaction(itemId, paymentType);
 
-        vendingMachine.ItemTransaction(itemId, amount, paymentType);
-
-        return Ok(vendingMachine);
+        return Task.FromResult<ActionResult<Application.Model.VendingMachine>>(Ok(currentVendingMachine));
     }
 }

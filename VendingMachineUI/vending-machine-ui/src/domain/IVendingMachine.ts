@@ -1,7 +1,8 @@
 export interface ICan {
   id: number,
   price: number,
-  flavour: number
+  flavour: number,
+  paymentType: number | 0
 }
 
 export default interface IVendingMachine {

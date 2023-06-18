@@ -4,10 +4,12 @@ import router from "./router";
 import store from "./store";
 import Vuetify from "vuetify";
 import 'vuetify/dist/vuetify.css';
+import 'material-icons/iconfont/material-icons.css';
+import '@mdi/font/css/materialdesignicons.css';
 
 
 Vue.config.productionTip = false;
-Vue.use(Vuetify)
+Vue.use(Vuetify);
 
 new Vue({
   router,

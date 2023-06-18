@@ -2,6 +2,7 @@
 
 public class VendingMachine
 {
+    private double FixedAmount = 2.50;
     public VendingMachine()
     {
         Items = new();
@@ -30,7 +31,7 @@ public class VendingMachine
         CardAmount += amount;
     }
 
-    public void ItemTransaction(int itemId, double amount, PaymentType paymentType)
+    public void ItemTransaction(int itemId, PaymentType paymentType)
     {
         var itemToRemove = Items.Find(x => x.Id == itemId);
 
@@ -38,10 +39,10 @@ public class VendingMachine
         switch (paymentType)
         {
             case PaymentType.Card:
-                CardDeposit(amount);
+                CardDeposit(FixedAmount);
                 break;
             case PaymentType.Cash:
-                CashDeposit(amount);
+                CashDeposit(FixedAmount);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(paymentType), paymentType, null);
@@ -72,7 +73,7 @@ public class VendingMachine
         {
             var randomFlavour = (Flavour)ranNumber.Next(0, 10);
 
-            Items.Add(new Can(index + 1, 2.50, randomFlavour));
+            Items.Add(new Can(index + 1, FixedAmount, randomFlavour));
         }
     }
 }
