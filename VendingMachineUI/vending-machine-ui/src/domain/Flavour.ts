@@ -1,3 +1,6 @@
+/**
+ * Represents the available flavours for the vending machine's cans.
+ */
 export enum Flavour {
   Coke,
   Sprite,

@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <div v-if="vendingMachine" class="content-div">
+      <!-- Vending Machine Information -->
       <h1>Vending Machine</h1>
-
       <div class="info-div">
         <div>
           Available items: {{ vendingMachine.availableItems }}
@@ -13,6 +13,7 @@
         </div>
       </div>
 
+      <!-- Vending Machine Items Table -->
       <v-simple-table>
         <template v-slot:default>
           <thead>
@@ -37,8 +38,8 @@
         </template>
       </v-simple-table>
 
+      <!-- Dialog for Selecting Product -->
       <v-btn @click="showDialog = true">Select product</v-btn>
-
       <v-dialog 
         v-model="showDialog"
         persistent
@@ -148,6 +149,7 @@ export default class VendingMachine extends Vue {
   selectedItem: { itemId: number, paymentType: number } = { itemId: 0, paymentType: 0 }
 
   async mounted() {
+    // Fetch vending machine data on component mount
     try {
       const response = await axios.get(baseURL);
 
@@ -156,8 +158,10 @@ export default class VendingMachine extends Vue {
       console.log(error);
     }
   }
-
+  
+  // Computed Properties
   get itemOptions(): { text: string, value: number }[] {
+    // Map vending machine items to options for item selection
     return (this.vendingMachine?.items.map(x => ({
         text: this.mapFlavour(x.flavour) + " " + "$" + x.price,
         value: x.id
@@ -165,6 +169,7 @@ export default class VendingMachine extends Vue {
   }
 
   get paymentOptions(): { text: string, value: number }[] {
+    // Options for payment type selection
     return [
       { text: "Card payment", value: 0 },
       { text: "Cash payment", value: 1 },
@@ -172,15 +177,19 @@ export default class VendingMachine extends Vue {
   }
 
   get totalAmount(): number {
+    // Calculate the total amount based on the selected item
     return this.vendingMachine?.items.find(x => x.id == this.selectedItem.itemId)?.price || 0;
   }
 
+  // Methods
   closeDialog() {
+    // Close the dialog
     this.showDialog = false;
   }
 
   @Watch("showDialog")
   resetSelection() {
+    // Reset the selected item when the dialog is closed
     if(!this.showDialog) {
       this.selectedItem.itemId = 0;
       this.selectedItem.paymentType = 0;
@@ -188,6 +197,7 @@ export default class VendingMachine extends Vue {
   }
 
   mapFlavour(flavour: number): string {
+    // Map the flavour enum value to its corresponding string representation
     return Flavour[flavour];
   }
   

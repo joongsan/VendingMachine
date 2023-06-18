@@ -4,23 +4,16 @@ import Dashboard from "../views/Dashboard.vue";
 
 Vue.use(VueRouter);
 
+// Define the routes for the Vue Router
 const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "dashboard",
     component: Dashboard,
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+  }
 ];
 
+// Create a new VueRouter instance
 const router = new VueRouter({
   routes,
 });
