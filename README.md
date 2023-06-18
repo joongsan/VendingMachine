@@ -33,12 +33,13 @@ Vending Machine API:
 2. Install the necessary dependencies: `dotnet restore`
 3. Build the project: `dotnet build`
 4. Run the application: `dotnet run`
-5. Open your web browser and visit `http://localhost:5000` to access the application.
+5. Open your web browser and visit `<your localhost>` to access the application.
 
 Vending Machine UI:
 1. Navigate to the `VendingMachineUI` directory.
 2. Install dependencies by running the following command: `npm install`
 3. Start the development server: `npm run serve`
+- Make sure to update base URL to locally running API endpoint. <strong>UDATE FOLLOWING CODE</strong> `const baseURL = 'https://localhost:7255/';`
 
 ## Project Structure
 
