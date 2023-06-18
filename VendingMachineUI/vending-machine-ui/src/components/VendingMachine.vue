@@ -18,10 +18,10 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left">
+              <th style="text-align: center;">
                 Flavour
               </th>
-              <th class="text-left">
+              <th style="text-align: center;">
                 Price
               </th>
             </tr>
@@ -39,7 +39,7 @@
       </v-simple-table>
 
       <!-- Dialog for Selecting Product -->
-      <v-btn @click="showDialog = true">Select product</v-btn>
+      <v-btn @click="showDialog = true">Purchase Product</v-btn>
       <v-dialog 
         v-model="showDialog"
         persistent
@@ -110,6 +110,9 @@
           </v-form>
         </v-card>
       </v-dialog>
+    </div>
+    <div v-else>
+      No data to display....
     </div>
   </v-app>
 </template>
