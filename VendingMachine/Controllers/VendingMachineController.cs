@@ -6,6 +6,9 @@ using VendingMachine.Domain;
 
 namespace VendingMachine.Controllers;
 
+/// <summary>
+/// Controller responsible for handling vending machine-related actions.
+/// </summary>
 public class VendingMachineController : Controller
 {
     private readonly ITransactionService _transactionService;

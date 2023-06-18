@@ -1,5 +1,8 @@
 ﻿namespace VendingMachine.Application.Models;
 
+/// <summary>
+/// Represents a request for a transaction in a vending machine.
+/// </summary>
 public class TransactionRequest
 {
     public TransactionRequest(VendingMachine currentVendingMachine, int itemId, PaymentType paymentType)

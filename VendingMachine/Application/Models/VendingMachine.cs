@@ -2,6 +2,9 @@
 
 namespace VendingMachine.Application.Models;
 
+/// <summary>
+/// Represents a vending machine.
+/// </summary>
 public class VendingMachine
 {
     public VendingMachine()
@@ -17,11 +20,19 @@ public class VendingMachine
     public double CashAmount { get; set; }
     public double CardAmount { get; set; }
 
+    /// <summary>
+    /// Deposits cash into the vending machine.
+    /// </summary>
+    /// <param name="amount">The amount of cash to deposit.</param>
     public void CashDeposit(double amount)
     {
         CashAmount += amount;
     }
 
+    /// <summary>
+    /// Deposits funds from a card into the vending machine.
+    /// </summary>
+    /// <param name="amount">The amount of funds to deposit.</param>
     public void CardDeposit(double amount)
     {
         CardAmount += amount;
