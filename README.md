@@ -2,6 +2,9 @@
 
 The Vending Machine project is a simple implementation of a vending machine system. It allows users to interact with the vending machine, make purchases, and manage the inventory.
 
+## Assumptions
+Assumptions are located within `Plan of attack.docx` file
+
 ## Features
 
 - Initialize the vending machine with predefined items and quantities.
