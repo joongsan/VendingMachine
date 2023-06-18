@@ -38,7 +38,8 @@ Vending Machine API:
 Vending Machine UI:
 1. Navigate to the `VendingMachineUI` directory.
 2. Install dependencies by running the following command: `npm install`
-3. Start the development server: `npm run serve`
+3. Install axios dependencies by running the following command: `npm install axios`
+4. Start the development server: `npm run serve`
 - Make sure to update base URL to locally running API endpoint. <strong>UDATE FOLLOWING CODE</strong> `const baseURL = 'https://localhost:7255/';`
 
 ## Project Structure
